@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { AiOutlineMenu, AiOutlineClose, AiOutlineShoppingCart, AiOutlineSearch } from 'react-icons/ai';
 import { BiMenuAltLeft } from "react-icons/bi";
 
+
 const navItems = [
   { name: 'Home', to: '/' },
   { name: 'Custom Build', to: '/build' },
@@ -27,11 +28,11 @@ const navItems = [
 function Navbar(props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  
+
 
 
   return (
-    <nav className="bg-white shadow-sm md:px-20 ">
+    <nav className={`${props.isOverVideo ? 'bg-transparent' : 'bg-white shadow-sm' } md:px-20 z-30 sticky top-0 w-full `} >
       <div className="max-w-fill flex items-center justify-between h-16">
         <div className="text-center flex items-center">
           <button
@@ -58,7 +59,7 @@ function Navbar(props) {
                 <button
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
-                  className="text-gray-700 hover:text-blue-600"
+                  className="text-blue-500 hover:text-blue-600"
                 >
                   {item.name}
                 </button>
@@ -82,7 +83,7 @@ function Navbar(props) {
               </li>
             ) : (
               <li key={item.name}>
-                <NavLink to={item.to} className="text-gray-700 hover:text-blue-600">
+                <NavLink to={item.to} className="navItem text-blue-500 hover:text-blue-600">
                   {item.name}
                 </NavLink>
               </li>
